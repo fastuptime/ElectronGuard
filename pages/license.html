@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisanssız Kullanım</title>
+</head>
+<body>
+    <h1>Lisanssız Kullanım</h1>
+    <p>Uygulamayı lisanssız kullanamazsınız. Lütfen lisans satın alınız.</p>
+    <button id="buy">Lisans Satın Al</button>
+    
+    <script>
+        const ipc = require('electron').ipcRenderer;
+
+        document.getElementById('buy').addEventListener('click', () => {
+            ipc.send('buy');
+        });
+    </script>
+
+    <style>
+        body {
+            background-color: rgb(234, 77, 77);
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: white;
+            color: rgb(234, 77, 77);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(255, 255, 255, 0.8);
+        }
+
+        button:active {
+            background-color: rgb(255, 255, 255, 0.6);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+
+    </style>
+    
+</body>
+</html>

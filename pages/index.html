@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Kontrol Paneli</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Discord Botu</h1>
+        <p>Discord botunu başlatmak veya durdurmak için aşağıdaki butonları kullanabilirsiniz.</p>
+        <div class="buttons">
+            <button id="start">Başlat</button>
+            <button id="stop" style="display: none;">Durdur</button>
+        </div>
+
+        <div class="logs">
+            <h2>Loglar</h2>
+            <pre id="logs"></pre>
+        </div>
+    </div>
+
+    <script>
+        const ipc = require('electron').ipcRenderer;
+
+        document.getElementById('start').addEventListener('click', () => {
+            ipc.send('start');
+        });
+
+        document.getElementById('stop').addEventListener('click', () => {
+            ipc.send('stop');
+        });
+
+        ipc.on('started', () => {
+            document.getElementById('start').style.display = 'none';
+            document.getElementById('stop').style.display = 'block';
+        });
+
+        ipc.on('stopped', () => {
+            document.getElementById('start').style.display = 'block';
+            document.getElementById('stop').style.display = 'none';
+        });
+
+        ipc.on('log', (event, log) => {
+            const logs = document.getElementById('logs');
+            logs.innerText += log + '\n';
+            logs.scrollTop = logs.scrollHeight;
+        });
+
+    </script>
+    
+
+    <style>
+        body {
+            background-color: rgb(77, 77, 234);
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: white;
+            color: rgb(77, 77, 234);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        button#stop {
+            background-color: rgb(234, 77, 77);
+            color: white;
+        }
+
+        button#start {
+            background-color: rgb(51, 108, 51);
+            color: white;
+        }
+
+        button:hover {
+            background-color: rgb(255, 255, 255, 0.8);
+        }
+
+        button:active {
+            background-color: rgb(255, 255, 255, 0.6);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        .logs {
+            margin-top: 20px;
+            background-color: rgb(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            text-align: left;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        pre {
+            font-size: 1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        
+    </style>
+</body>
+</html>
