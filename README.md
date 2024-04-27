@@ -1,4 +1,3 @@
-
 # ElectronGuard 🛡️
 
 Bu proje, Electron.js ve Node.js kullanarak geliştirilmiş bir uygulamadır. Electron.js uygulamalarının şifrelenerek paylaşılmasını engellemek için geliştirilmiştir.
@@ -18,6 +17,7 @@ Bu proje, Electron.js ve Node.js kullanarak geliştirilmiş bir uygulamadır. Pr
 1. Projeyi indirin veya klonlayın.
 2. Terminali açın ve proje dizinine gidin.
 3. `npm install` komutunu çalıştırarak gerekli bağımlılıkları yükleyin.
+4. Ek olarak kodları gizlemek için build almanız gerekmektedir. Bunu unutmayın.
 
 ## Ekran Görüntüleri 🎈
 
