@@ -4,8 +4,8 @@ const { spawn } = require('child_process');
 
 const keys = ["secret", "key"];
 
-const controlLicense = () => {
-    if (keys.includes("kdey")) {
+const controlLicense = (key) => {
+    if (keys.includes(key)) {
         return true;
     }
     return false;
@@ -23,18 +23,23 @@ function createWindow() {
     });
 
     win.setMenuBarVisibility(false);
+    win.loadFile('./pages/keyLogin.html');
 
-    if (!controlLicense()) {
-        win.loadFile('./pages/license.html');
-        
-        ipcMain.on('buy', (event) => {
-            console.log('buy');
-        });
+    ipcMain.on('keyLogin', (event, key) => {
+        if (!controlLicense(key)) {
+            win.loadFile('./pages/license.html');
+            
+            ipcMain.on('buy', (event) => {
+                console.log('buy');
+            });
+    
+            return;
+        } else {
+            win.loadFile('./pages/index.html');
+        }
+    });
+    
 
-        return;
-    }
-
-    win.loadFile('./pages/index.html');
 
     let bot; 
 

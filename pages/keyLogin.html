@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisans Anahtarı Girişi</title>
+</head>
+<body>
+
+    <div class="conteiner">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="key">Lisans Anahtarı</label>
+                    <input type="text" name="key" class="form-control" id="key" required>
+                </div>
+                <button id="submit" class="btn btn-primary">Giriş</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const ipc = require('electron').ipcRenderer;
+
+        document.getElementById('submit').addEventListener('click', function(){
+            var key = document.getElementById('key').value;
+            ipc.send('keyLogin', key);
+        });
+
+    </script>
+
+    <style>
+        .conteiner {
+            margin-top: 100px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .col-md-6 {
+            width: 50%;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #206fce;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1a5f9c;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+
+
+
+    </style>
+</body>
+</html>
