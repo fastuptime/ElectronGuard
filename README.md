@@ -23,6 +23,7 @@ Bu proje, Electron.js ve Node.js kullanarak geliştirilmiş bir uygulamadır. Pr
 
 ![image](https://github.com/fastuptime/electron_license_basic/assets/63351166/9116b8b7-4414-4310-9501-f5b676261c61)
 ![image](https://github.com/fastuptime/electron_license_basic/assets/63351166/29ea67d1-60ad-4eda-aa66-3fbb67afb927)
+![image](https://github.com/fastuptime/ElectronGuard/assets/63351166/f2051f53-3f44-4e70-857f-06b179409c55)
 
 # 🎯 License 🎯
 - ⚖️ Its protected by Creative Commons ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
